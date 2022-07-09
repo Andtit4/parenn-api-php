@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/add.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card" style="width: 38rem; border: 1px solid #e5e5e5;">
+            <div class="card-body" style="margin-left: 12px ;">
+              <h5 class="card-title">Ajouter un produit</h5>
+              <form method="post" action="" enctype="multipart/form-data">
+                <input type="file" name="img_product" id="" /><br>
+                <input type="text" name="name" placeholder="Nom du produit" width="320px" /><br><br>
+                <input type="number" name="montant_product" placeholder="Montant du produit" width="320px" /><br><br>
+                <input type="submit" name="add" class="btn btn-primary" value="Ajouter" />
+              </form>
+            </div>
+          </div>
+
+          <?php while($user_info = $req_sel_adh->fetch()){ ?>
+            <div class="card">
+                <div class="card-header">
+                  Produit <?= $user_info['id_product']; ?>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title"> <img src="views/img/<?= $user_info['img_product']; ?>" alt="<?= $user_info['img_product']; ?>" width="120px" height="120px"> </h5>
+                  <div class="pos">
+                      <p>Produit: <?php echo $user_info['name_product']; ?></p>
+                      <p>Montant: <?php echo $user_info['montant_product']; ?> </p>
+        
+                      <?php if (isset($user_info['add_by'])) { echo "Ajouter par: ".$user_info['add_by'];} ?>
+        
+                
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <?php } ?>
+    </div>
+</body>
+</html>
